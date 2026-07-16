@@ -24,3 +24,49 @@ Defender Exclusions: Added a one-liner to automatically add the EngineToolbox pa
 ESET Mitigation: Revised extraction subroutines to help bypass heuristic blocking by security suites like ESET.
 Current Build Version: v2.90 (STABLE)
 Status: All Page 1 tools (1-96) verified or corrected.
+
+
+Below is the technical evolution log of the Morphs Creations DEPLOYMENT CONSOLE, detailing the architectural shift from a basic script to a hardened, self-healing automation framework.
+1. Core Execution Engine Evolution
+Stack Return Correction: Transitioned from goto :EOF to exit /b 0 across all subroutines. This prevented the script from terminating the entire process when an inner command returned an error.
+Loop Stability: Moved away from standard FOR loops (which collapse if a variable context is lost) to a Linear Queue Index and finally a Double-Isolated Call Structure.
+Label Verification: Implemented a pre-execution check using findstr /i ":Opt_%%i" to ensure a subroutine label exists before calling it, preventing "Label Not Found" crashes.
+Process Isolation: Wrapped external .cmd calls in cmd /c to prevent scripts in \FilesU\ from hijacking the main console’s exit code.
+2. Connectivity & Security (The "404" Fixes)
+TLS Enforcement: Forced PowerShell to use [Net.SecurityProtocolType]::Tls12 -bor Tls13. Modern servers (GitHub, Mozilla, SourceForge) were rejecting the script's default TLS 1.0 handshakes.
+Browser Mimicry: Integrated a high-fidelity User-Agent header (Mozilla/5.0...) and Referer spoofing into the :DirectDL engine. This bypassed bot-protection redirects on sites like WiseCleaner, AIMP, and SmadAV.
+Progress Bar Integration: Re-enabled the native PowerShell progress bar by removing the SilentlyContinue preference, providing visual feedback for large downloads.
+Payload Validation: Created the :CheckSize utility. The script now measures the downloaded file; if it is under 50KB (indicating an HTML error page or blocked connection), it is automatically purged to prevent corrupt installs.
+3. Environmental & Path Hardening
+Root Spillage Fix: Addressed a critical bug where Programs, Frameworks, and Tools folders were being created in the drive root (F:\).
+Absolute Anchoring: Implemented %~dp0 absolute path anchoring for all folder variables (W_Dir, P_Dir, T_Dir). This locks the entire environment inside the EngineToolbox folder regardless of the current working directory.
+Working Directory (CWD) Management: Integrated pushd and popd commands for local tools. This ensures that utilities like WUB and dControl can read their companion .ini files in the Tools folder.
+4. UI, Numbering & Grid Re-Mapping
+Numerical Synchronization: Re-mapped the entire toolset to your custom schema:
+1-13: Standard Programs.
+20-26: Online Browsers.
+30-40: Portable Tools 1.
+41-49: Portable Tools 2.
+50-60: Portable Tools 3.
+70-77: Deployment Runtimes.
+80-82: Forensic Suites.
+90-96: System Optimizations.
+700-764: Page 2 (Office, Media, Dev Tools).
+Grid Alignment: Re-sequenced Column 3 to follow a strict chronological flow: Portable 3 -> Runtimes -> Forensics -> SysOpt -> Macros.
+Sub-Menu Navigation: Hardened the "More Optimizations" [M] menu. Fixed the "B" (Back) button logic to ensure it returns to the Page 1 Main Menu instead of exiting.
+Footer Restoration: Compacted the menu drawing logic to prevent AI truncation from cutting off the navigation controls.
+5. Advanced Subroutine Logic
+Self-Healing Tools: Re-coded Option 90 (WUB) and Option 96 (dControl). If the files are missing from the Tools folder, the script now:
+Downloads the direct binary ZIP.
+Silently extracts it via PowerShell.
+Recursively finds the .exe inside subfolders.
+Launches the program automatically.
+Hardcoded Registry Engine: Replaced external .reg file calls for context menu tweaks with internal reg add and reg delete commands. This allows the tweaks to function even if the Tools folder is completely empty.
+Macro Expansion: Fixed the "Double-Expansion" bug. Macro IDs like 666 or 250 now expand into a clean list of IDs before processing, preventing logic loops.
+6. Link Hardening (Specific Fixes)
+qBittorrent (712): Re-mapped to GitHub releases to bypass SourceForge mirrors.
+Winamp (10): Re-mapped to the Nullsoft direct full-installer link.
+Firefox ESR (713): Re-mapped to the Mozilla CDN direct binary path.
+Foxit Reader: Removed per user request due to a lack of stable direct links.
+Project Status: Architecture Finalized.
+The script is now split into two mandatory blocks to ensure the AI never truncates the subroutines again.
