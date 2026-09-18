@@ -16,18 +16,6 @@ modifications and system repair actions (1,040 catalogued items total).
 
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                     MORPHS CREATIONS TOOLBOX RUNTIME ENGINE                      │
-├────────────────────────────────┬─────────────────────────────────────────────────┤
-│ 🔍 Binary Signature Preflight  │ Inspects initial header bytes (MZ, PK, MSI, 7z) │
-│                                │ Rejects text/HTML captive portal stubs (0x3C)   │
-├────────────────────────────────┼─────────────────────────────────────────────────┤
-│ 🌐 Dual-Path Transport         │ Windows-native curl.exe HTTPS transport with    │
-│                                │ managed .NET socket fallback                    │
-├────────────────────────────────┼─────────────────────────────────────────────────┤
-│ 🧵 Bounded Parallel Pool       │ Five-worker PowerShell runspace execution queue │
-│                                │ for asynchronous downloads and verification     │
-├────────────────────────────────┼─────────────────────────────────────────────────┤
-│ 💾 Resilient Dual-Location Config│ Local directory settings engine with fallback  │
-│                                │ to %LOCALAPPDATA% for read-only environments   │
 ├────────────────────────────────┼─────────────────────────────────────────────────┤
 │ 🖥️ Dual-Interface Engine       │ WinForms desktop GUI + 4-page high-density CLI   │
 │                                │ companion (toolbox.cmd) with range parser       │
