@@ -12,15 +12,6 @@ manages an extensive catalog of 1,000 deployable software packages, developer
 toolchains, runtimes, and utilities, alongside 40 runtime OS policy
 modifications and system repair actions (1,040 catalogued items total).
 
-⚙️ Core Architecture & Reliability Features
-
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│                     MORPHS CREATIONS TOOLBOX RUNTIME ENGINE                      │
-├────────────────────────────────┼─────────────────────────────────────────────────┤
-│ 🖥️ Dual-Interface Engine       │ WinForms desktop GUI + 4-page high-density CLI   │
-│                                │ companion (toolbox.cmd) with range parser       │
-└────────────────────────────────┴─────────────────────────────────────────────────┘
-
 1.  Binary Signature Preflight Validation
     To prevent corrupt downloads, incomplete streams, or server captive portals
     from breaking deployments, incoming files undergo format-signature
