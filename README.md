@@ -1,232 +1,222 @@
-### Morphs Creations Toolbox v5.60
+<img width="1024" height="1536" alt="1789745938404-01a0b52a-d610-7182-b27e-f2b2848cd141" src="https://github.com/user-attachments/assets/89e98cd7-0cd3-4cd8-b22d-b17c35a4d686" />
 
-<img width="1983" height="793" alt="f50bf53d-5679-4c5a-8ecf-251d885d18d8" src="https://github.com/user-attachments/assets/a95f4632-0697-4aa1-8901-9b847f5e5269" />
 
-Morphs Creations Toolbox Suite (Windows GUI)
+Morphs Creations Toolbox Suite v5.80
 
-Comprehensive Architectural & Functional Overview
+The 1,000+ Tool Deployment, Diagnostics & System Optimization Suite
 
-1. Executive Overview & Core Philosophy
+Morphs Creations Toolbox Suite is a unified, Windows-native deployment,
+diagnostic, and system maintenance platform. Built natively for Windows 10 and
+Windows 11 using system-provided components and runtime environments, the suite
+manages an extensive catalog of 1,000 deployable software packages, developer
+toolchains, runtimes, and utilities, alongside 40 runtime OS policy
+modifications and system repair actions (1,040 catalogued items total).
 
-The Morphs Creations Toolbox Suite is a unified Windows systems administration,
-deployment, and power-user software management environment. Built natively for
-Windows 10 and Windows 11 using PowerShell WinForms and compiled via PS2EXE into
-a standalone, portable binary, the application serves as an all-in-one
-installation, diagnostic, and OS maintenance hub.
+⚙️ Core Architecture & Reliability Features
 
-  - 100% Free Core Engine: Zero feature gating, zero paywalls on system recovery
-    or security diagnostics, and zero telemetry collection.
-  - Curated Integrity Standard: Strict single-canonical-version and
-    single-architecture policies eliminate redundant duplicates,
-    installer/portable clones, and fragile micro-stubs in favor of substantial,
-    verified software projects.
-  - Dynamic Relative Directory Topology: Self-discovers its execution context
-    (whether launched as a raw .ps1 or a compiled .exe) and dynamically
-    provisions a structured workspace (\EngineToolbox\ containing \Programs\,
-    \Tools\, \Frameworks\, and \RegFiles\).
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│                     MORPHS CREATIONS TOOLBOX RUNTIME ENGINE                      │
+├────────────────────────────────┬─────────────────────────────────────────────────┤
+│ 🔍 Binary Signature Preflight  │ Inspects initial header bytes (MZ, PK, MSI, 7z) │
+│                                │ Rejects text/HTML captive portal stubs (0x3C)   │
+├────────────────────────────────┼─────────────────────────────────────────────────┤
+│ 🌐 Dual-Path Transport         │ Windows-native curl.exe HTTPS transport with    │
+│                                │ managed .NET socket fallback                    │
+├────────────────────────────────┼─────────────────────────────────────────────────┤
+│ 🧵 Bounded Parallel Pool       │ Five-worker PowerShell runspace execution queue │
+│                                │ for asynchronous downloads and verification     │
+├────────────────────────────────┼─────────────────────────────────────────────────┤
+│ 💾 Resilient Dual-Location Config│ Local directory settings engine with fallback  │
+│                                │ to %LOCALAPPDATA% for read-only environments   │
+├────────────────────────────────┼─────────────────────────────────────────────────┤
+│ 🖥️ Dual-Interface Engine       │ WinForms desktop GUI + 4-page high-density CLI   │
+│                                │ companion (toolbox.cmd) with range parser       │
+└────────────────────────────────┴─────────────────────────────────────────────────┘
 
-                         [ EngineToolbox Workspace Root ]
-                                     │
-         ┌───────────────────┬───────┴───────────┬───────────────────┐
-         │                   │                   │                   │
-    \Programs\         \Frameworks\           \Tools\            \RegFiles\
-  (x64 Installers)   (Runtimes & SDKs)    (Standalone Utils)   (Registry Tweaks)
+1.  Binary Signature Preflight Validation
+    To prevent corrupt downloads, incomplete streams, or server captive portals
+    from breaking deployments, incoming files undergo format-signature
+    inspection prior to storage:
 
-2. Heavyweight & Hard-to-Find Power Applications
+      - Executables (.exe, .dll, .sys): Preflight checks for the initial
+        0x4D 0x5A (MZ) DOS header.
+      - Zip Containers (.zip, .msixbundle, .nupkg): Verified against 0x50 0x4B
+        (PK).
+      - Compound File Installers (.msi): Verified against the CFB signature
+        0xD0 0xCF.
+      - 7-Zip Archives (.7z): Verified against 0x37 0x7A 0xBC 0xAF.
+      - HTML/Response-Stub Detection: Rejects downloads where the initial byte
+        is 0x3C (<), intercepting HTML error pages, captive portal login
+        screens, and web server redirect stubs.
+        (Note: This is an automated file-format sanity check, not a
+        cryptographic Authenticode or malware security verdict).
 
-Rather than populating menus with small script stubs or disposable utilities,
-the Toolbox focuses on substantial, hard-to-find, and specialized engineering
-suites (ranging from 10 MB to 1.15 GB+):
+2.  5 MB+ Package Inclusion Threshold
+    The software catalog intentionally prioritizes full-featured desktop tools,
+    developer SDKs, and complete utilities over micro-scripts and single-purpose
+    command-line stubs.
 
-  - Advanced 3D CAD & Slicing: Mechanical parametric modelers (FreeCAD,
-    SolveSpace), electronic schematic and PCB design suites (KiCad EDA
-    Suite 1.15 GB), and modern multi-color 3D printing toolpath engines (Bambu
-    Studio, OrcaSlicer, PrusaSlicer, UltiMaker Cura).
-  - Data Science & Scientific Computing: Statistical environments (RStudio
-    Desktop), dynamic numerical language toolchains (Julia SDK), visual machine
-    learning pipelines (Orange Data Mining), relational graph analyzers (Gephi),
-    numerical computation suites (GNU Octave), and celestial 3D observatories
-    (Stellarium).
-  - Media & Digital Production: Professional 3D animation and rendering
-    (Blender 3D), raster manipulation (GIMP), digital painting (Krita),
-    node-based digital compositing (Natron), and hardware-accelerated
-    transcoding suites (StaxRip, HandBrake, LosslessCut).
-  - Game Development & Emulation: Standalone engines (Godot Engine Standard x64,
-    Defold 2D, Solar2D), RTS game engines (Warzone 2100), 3D racing benchmarks
-    (SuperTuxKart), and cycle-accurate multi-system hardware preservation
-    emulators (RetroArch, PCSX2, Dolphin, DuckStation, RPCS3, Cemu, BizHawk,
-    ares, MAME).
+3.  Dual-Path Transport Engine
+    Network acquisition executes primarily via Windows-native curl.exe utilizing
+    the system network stack, complete with automated redirect resolution (-L)
+    and connection retry logic. If the initial stream fails, the engine falls
+    back to a managed .NET socket stream.
 
-3. Comprehensive Frameworks, SDKs & Runtimes Engine
+4.  Resilient Dual-Location Configuration
+    Maintains user interface preferences, active themes, font scaling tiers, and
+    workspace history across two configuration endpoints
+    (.\EngineToolbox\settings.json with fallback to
+    %LOCALAPPDATA%\MorphsCreations\Toolbox\settings.json). This ensures full
+    functionality when running from read-only media, network shares, or
+    removable USB storage.
 
-The Toolbox provides a complete offline runtime installation engine. While
-general software strictly follows a single-architecture rule, Frameworks &
-Runtimes (Tab 11) are explicitly architected with dual-architecture (x86 and
-x64) support to resolve legacy and modern dependency errors on clean Windows
-installations:
+5.  Location-Independent Directory Topology
+    The application requires no fixed installation path, automatically
+    provisioning its working directory tree relative to the runtime location:
 
-  - Microsoft Visual C++ Redistributables: Complete range from
-    VC++ 2005, 2008, 2010, 2012, 2013, to 2015–2022 in parallel x86 and x64
-    standalone packages.
-  - Microsoft .NET Ecosystem: Legacy .NET Framework 4.8 / 4.8.1 Offline
-    Installers and modern .NET Desktop Runtimes (6.0, 7.0, 8.0, 9.0, and 10.0
-    Preview) in both x86 and x64 builds.
-  - Java LTS Runtimes: Eclipse Adoptium OpenJDK and Amazon Corretto JDK for
-    long-term support versions (Java 8, 11, 17, and 21 LTS).
-  - Graphics & System APIs: DirectX 9.0c End-User Redistributable (June 2010),
-    DirectX Web Setup, NVIDIA PhysX System Software, Vulkan Runtime Installer,
-    Microsoft Edge WebView2 Runtime, and Visual Studio Build Tools.
+      - .\EngineToolbox\Programs\ – Software installers and binary packages.
+      - .\EngineToolbox\Tools\ – Portable tools and standalone utilities.
+      - .\EngineToolbox\Frameworks\ – Runtimes, SDKs, and build environments.
+      - .\EngineToolbox\RegFiles\ – Explorer shell context menu configuration
+        scripts.
 
-4. 15-Category Partition Matrix & Search Normalization Engine
+6.  Native Windows Framework
+    Runs directly within Windows PowerShell and native command environments
+    without requiring third-party package managers, external runtime
+    installations, or background telemetry services.
 
-The GUI organizes tools across 15 dedicated category tabs, plus an active Live
-Search Results tab:
+🗂️ Categorical Workspaces (1,040 Catalogued Items)
 
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                        15 DEDICATED SUITE CATEGORIES (TABS)                            │
-├───────────────────────────────┬───────────────────────────────┬────────────────────────┤
-│ 1. Benchmarks & Hardware      │ 6. Docs, Code & Compilers     │ 11. Runtimes & SDKs    │
-│ 2. Web Browsers & Gecko       │ 7. Office, CAD & 3D Tools     │ 12. Security & Privacy │
-│ 3. Cleaners & Uninstallers    │ 8. ISO, Disks & Hypervisors   │ 13. Windows Tweaks     │
-│ 4. Cloud & Network Tools      │ 9. Media, DAWs & Graphics     │ 14. Heavy Studios      │
-│ 5. Diagnostics & Forensics    │ 10. Remote, Chat & Gaming     │ 15. OS Maintenance     │
-└───────────────────────────────┴───────────────────────────────┴────────────────────────┘
+The catalog is organized into 15 Categorical Tool Tabs and 1 Dynamic Live Search
+Tab (16 workspaces total):
 
-Real-Time Search Normalization (Matches-SearchQuery):
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│                        MASTER WORKSPACE PARTITIONS                               │
+├────┬─────────────────────────────┬──────────┬────────────────────────────────────┤
+│Tab │ Category Name               │ ID Range │ Scope & Tool Types                 │
+├────┼─────────────────────────────┼──────────┼────────────────────────────────────┤
+│ 1  │ Benchmarks & Hardware       │ 001–065  │ Sensors, Stress Tests, Fan Curves  │
+│ 2  │ Web Browsers & Engines      │ 066–105  │ Privacy, Gecko, Chromium Forks     │
+│ 3  │ Cleaners & File Management  │ 106–175  │ Uninstallers, Deduplication, Scrub │
+│ 4  │ Cloud, Networks & VPNs      │ 176–245  │ Mesh VPN, Packet Capture, S3 Tools │
+│ 5  │ Diagnostics & Forensics     │ 246–315  │ Sysinternals, Hex, Sandboxing      │
+│ 6  │ Docs, Code & Dev Stacks     │ 316–400  │ IDEs, SDKs, Local Web/DB Stacks    │
+│ 7  │ Office, CAD & GIS           │ 401–480  │ Office Suites, 2D/3D CAD, Mapping  │
+│ 8  │ ISO, Disks & Virtualization │ 481–560  │ Hypervisors, Boot Media, Imaging   │
+│ 9  │ Media Players & Audio DAWs  │ 561–645  │ Transcoders, Trackers, Art Studios │
+│ 10 │ Remote, Gaming & Emulators  │ 646–730  │ Remote Access, Launchers, Emus     │
+│ 11 │ Runtimes & Frameworks       │ 731–780  │ VC++ AIO, .NET Runtimes, OpenJDK   │
+│ 12 │ Security & Privacy Vaults   │ 781–840  │ Password Managers, Second-Opinion  │
+│ 13 │ Windows Tweaks & Mods       │ 841–890  │ Shell Mods, UI Customization       │
+│ 14 │ Engineering, Math & AI      │ 891–1000 │ Math, Multiphysics FEM, AI Stacks  │
+│ 15 │ OS Maintenance & Repairs    │ 1001–1040│ Policy Controls & CMD Fix Scripts  │
+│ 16 │ Dynamic Live Search         │ TabSearch│ Live Normalized String Filter      │
+└────┴─────────────────────────────┴──────────┴────────────────────────────────────┘
 
-  - Fuzzy & Substring Matching: Real-time filtering across tool names,
-    categories, tabs, and direct IDs.
-  - Alphanumeric Sanitization: Automatically strips spaces, symbols, and
-    punctuation from search strings (e.g., typing hwinfo, hw-info, or hw info
-    instantly isolates HWiNFO64 Diagnostics).
-  - Dynamic Tab Switching: Entering a search query automatically switches the
-    view to the 🔍 Search Results tab and dynamically updates item count badges.
-    Clearing the search box restores the default tab layout.
+Tab Summaries
 
-5. Resilient Download Pipeline & Offset-0 Magic-Byte Validator
+  - Tab 1: Benchmarks, Thermals & Hardware Forensics (IDs 1–65)
+    Hardware telemetry, fan curves, storage throughput benchmarks, GPU stress
+    suites, and latency diagnostics (CapFrameX, HWiNFO64, Core Temp, AIDA64,
+    FurMark 2, Novabench, ATTO Disk Benchmark, LatencyMon, Quick CPU, OpenRGB).
+  - Tab 2: Web Browsers & Gecko Engines (IDs 66–105)
+    Privacy-hardened browsers, legacy compatibility engines, and performance
+    forks (LibreWolf, Mullvad, Tor Browser, Brave, Chrome Enterprise, Firefox,
+    Vivaldi, Zen Browser, Floorp, Waterfox, Supermium, Thorium AVX2).
+  - Tab 3: Cleaners, Scrubbers & File Management (IDs 106–175)
+    Bulk software removal, duplicate file finders, filesystem visualizers, and
+    shell management utilities (BCUninstaller, Revo Portable, Geek Uninstaller,
+    WizTree, TreeSize Free, SpaceSniffer, AllDup, Double Commander, LockHunter).
+  - Tab 4: Cloud, Networks, VPNs & S3 Storage (IDs 176–245)
+    Network analyzers, mesh VPN clients, terminal emulators, and local cloud
+    infrastructure (WireGuard, OpenVPN, Tailscale, Cloudflare WARP, Wireshark,
+    Nmap, WinSCP, Bitvise SSH, Nextcloud, Rclone, MinIO S3 Server, GNS3).
+  - Tab 5: System Diagnostics, Process & Binary Forensics (IDs 246–315)
+    Process investigation, kernel namespace inspectors, and memory forensics
+    (Sysinternals Suite, Process Explorer, Process Monitor, HxD, ImHex,
+    AutoHotkey v2, QuickLook, Everything Search, Sandboxie-Plus x64).
+  - Tab 6: Docs, Code Editors, Compilers & SDKs (IDs 316–400)
+    Development environments, compiler toolchains, database management consoles,
+    and local server stacks (VS Code, VSCodium, Notepad++, Sublime Text, Neovim,
+    Python, Node.js, Go, Rust, Zig, LLVM, pgAdmin 4, MySQL Workbench, Redis
+    Insight, LocalWP, XAMPP, WampServer, Rancher Desktop).
+  - Tab 7: Office Suites, Technical CAD, GIS & Publishing (IDs 401–480)
+    Productivity applications, geographic information systems, parametric 3D/2D
+    CAD, and document utilities (LibreOffice, OnlyOffice, QGIS 1.1GB Suite, SAGA
+    GIS, FreeCAD, LibreCAD, QCAD, OpenSCAD, PDF24 Creator, Okular, Calibre,
+    Sigil).
+  - Tab 8: ISO, Disks, Virtualization & Boot Tools (IDs 481–560)
+    Hypervisors, bootable media creators, disk cloners, and forensic image
+    analyzers (VirtualBox, QEMU, Rufus, Ventoy, BalenaEtcher, Clonezilla Live,
+    GParted Live, EaseUS Partition Master, Autopsy Forensics, FTK
+    Imager, 7-Zip).
+  - Tab 9: Media Players, Audio DAWs & Video Transcoders (IDs 561–645)
+    Media playback, video transcoders, digital audio workstations, audio
+    trackers, and raster/vector creation studios (VLC, MPC-HC, MPV, HandBrake,
+    VidCoder, Shutter Encoder, OBS Studio, Audacity, Ardour DAW, VCV Rack, Surge
+    XT, Vital Synth, Blender, Krita, GIMP, Inkscape).
+  - Tab 10: Remote Access, Chat, Game Launchers & Emulators (IDs 646–730)
+    Remote desktop utilities, collaboration tools, 2D/3D game engines, and
+    multi-console emulation systems (RustDesk, AnyDesk, Discord, Telegram,
+    Signal, GDevelop, LÖVE 2D, Ren'Py, Raylib, RetroArch, RPCS3, PCSX2, Dolphin,
+    DuckStation, Simple64, Lime3DS, Steam, Heroic Games, Playnite).
+  - Tab 11: Complete Runtimes, Frameworks & Core SDKs (IDs 731–780)
+    Curated Visual C++ Redistributable libraries (2005–2022 x86/x64), Microsoft
+    .NET Desktop Runtimes, Adoptium OpenJDK / Amazon Corretto LTS releases,
+    DirectX runtimes, Vulkan, and NVIDIA PhysX.
+  - Tab 12: Security Vaults, Privacy Hardening & Anti-Malware (IDs 781–840)
+    Credential vaults, secondary emergency malware scanners, disk encryption
+    tools, and memory analysis utilities (Bitwarden, KeePassXC, KVRT, ESET
+    Online Scanner, MSERT, HitmanPro, VeraCrypt, AxCrypt, Volatility Workbench,
+    Magnet RAM Capture).
+  - Tab 13: Windows Tweaks, Customization & Shell Mods (IDs 841–890)
+    Desktop customizers, shell enhancers, and automation suites (Microsoft
+    PowerToys, Chris Titus WinUtil, StartAllBack, Open-Shell, Windhawk, AutoIt,
+    TaskbarX, Rainmeter, Flow Launcher, Defender Control).
+  - Tab 14: Heavy Studios, Engineering, Math, Scientific & AI (IDs 891–1000)
+    Computer algebra systems, multiphysics finite-element engines, local LLM/AI
+    runners, and electronic design suites (GNU Octave, Scilab, wxMaxima,
+    SageMath, LTspice, ngspice, Avogadro 2, PyMOL, Gmsh, Elmer FEM, KiCad PCB
+    Suite, Ollama, LM Studio, ComfyUI, AnythingLLM).
+  - Tab 15: OS Maintenance, Policies & Surgical CMD Repairs (IDs 1001–1040)
+      - Shell Enhancements: Take Ownership context menu integration, Open in
+        PowerShell/CMD here, hidden file/extension toggles, Desktop God Mode,
+        and Explorer restart actions.
+      - System Policy Controls: Toggles for diagnostic data services, Consumer
+        Cortana & Bing Start search, Lock Screen spotlight advertising, location
+        sensors, GameDVR overlays, and Fast Startup.
+      - CMD Repair Operations: DISM Component Store health restoration
+        (/RestoreHealth), System File Checker (sfc /scannow), TCP/IP Winsock
+        resets, Windows Update service and SoftwareDistribution/Catroot2 resets,
+        bulk UWP app re-registration, and Icon/Font cache rebuilders.
+  - Tab 16: Dynamic Live Search Results (TabSearch)
+    Real-time normalized filter across all 1,040 items, filtering dynamically
+    across names, categories, parent tabs, and IDs.
 
-Standard download scripts frequently fail because remote web servers
-(SourceForge, Cloudflare, anti-bot CDNs) return a 200 OK status with an HTML
-error page, landing page, or captcha stub rather than the actual binary. When
-executed, these fake HTML files corrupt local caches and crash installers.
+🎨 User Interface & Operational Features
 
-The Toolbox resolves this through an Offset-0 Magic-Byte Verification Engine
-(Test-ValidBinaryFile):
+  - 10 High-Contrast Visual Themes: Soft Slate (Light), Dark Stealth, Blood
+    Matrix (Cyber Red), Gamer Theme (Matrix Green), Cyber Yellow, Cyberpunk
+    Pink, Nordic Frost, Dracula Purple, Sunset Amber, and Solarized Ocean.
+  - 4-Tier Dynamic Font Scaling: Coordinates interface scaling across Small
+    (8.0pt), Medium (9.0pt), Large (11.0pt), and Extra Large
+    (12.5pt)—dynamically adjusting list items, console telemetry, and tab header
+    titles.
+  - Literal Direct-ID "Select All": Directly selects 100% of downloadable assets
+    (Type -eq 'DL') from memory while leaving disk-checking and skip decisions
+    ([SKIPPED]) strictly to the preflight validation engine.
+  - Action Context Menus: Right-click entries to launch/install, extract
+    compressed archives on-the-fly, open containing directories in Explorer, or
+    perform a manual binary header preflight check.
+  - Dual-Interface Operation: Launch via the visual WinForms dashboard
+    (windowsgui.ps1) or deploy headlessly through the companion 4-page command
+    console (toolbox.cmd) supporting range execution (e.g. 1-45) and preset
+    deployment profiles.
 
-File on Disk ──> Inspect First 16 Bytes ──> Check Byte 0 != 0x3C ('<') ──> Match Binary Magic Header
-                                                                                   │
-               ┌───────────────────────┬───────────────────────┬───────────────────┴───────────────────┐
-               ▼                       ▼                       ▼                                       ▼
-        MZ (0x4D 0x5A)          PK (0x50 0x4B)          Compound Document                   7z (0x37 0x7A 0xBC 0xAF)
-       Executable Binaries     ZIP / MSIX / Nupkg           (0xD0 0xCF)                        7-Zip Archives
-      (.exe, .dll, .sys)      Archives (.zip, etc.)        MSI Packages (.msi)                     (.7z)
+📄 Licensing & Software Distribution Notice
 
-1.  Anti-HTML Detection: Rejects any download where Byte 0 equals 0x3C (<),
-    instantly catching XML, HTML, or Cloudflare challenge stubs.
-2.  Strict Magic-Byte Signatures:
-      - Executables (.exe, .dll, .sys) must start with MZ (0x4D 0x5A) and exceed
-        minimum byte lengths.
-      - Archive packages (.zip, .msixbundle, .nupkg) must start with PK
-        (0x50 0x4B).
-      - Windows Installer packages (.msi) must match the Compound Document
-        Header (0xD0 0xCF).
-      - 7-Zip packages (.7z) must match the 4-byte signature 37 7A BC AF.
-3.  Instant Auto-Purge: Any failed, partial, or corrupted file is automatically
-    deleted from disk and flagged as Missing.
-4.  Zero-Flash Execution: Downloads run via System.Diagnostics.ProcessStartInfo
-    utilizing curl.exe with hidden window flags (CreateNoWindow = $true), with
-    automatic failover to managed .NET WebClient streams.
-
-6. UI Theming, 4-Tier Font Scaling & Layout System
-
-The interface is built with a high-contrast layout, complete with horizontal
-splitter customization (SplitContainer) allowing users to dynamically resize the
-tool catalog and logging console.
-
-Unified 10 High-Contrast Themes Matrix
-
-	Themes 
- 
- **Dark Mode (Stealth)**      
- **Light Mode (Soft Slate)**  
- **Gamer (Matrix Green)**     
- **Blood Matrix (Cyber Red)** 
- **Cyber Yellow**             
- **Cyberpunk Pink**           
- **Nordic Frost**             
- **Dracula Purple**           
- **Sunset Amber**             
- **Solarized Ocean**          
-
-4-Tier Font Scaling Engine (Consolas)
-
-Adapts dynamically to high-DPI and 4K displays without layout truncation:
-
-  - Small: 8.0pt (Catalog) / 8.0pt Bold (Console)
-  - Medium (Default): 9.0pt (Catalog) / 9.5pt Bold (Console)
-  - Large: 11.0pt (Catalog) / 11.5pt Bold (Console)
-  - Extra Large: 12.5pt (Catalog) / 13.0pt Bold (Console)
-
-7. Asynchronous Runspace Pool & Thread-Safe State Engine
-
-To prevent UI freezing during large multi-gigabyte download queues, the Toolbox
-uses an isolated multi-threaded runspace architecture:
-
-  - Thread-Safe State Container (ToolboxState): Coordinates queue locks, active
-    worker counts, cancellation flags, and thread-safe progress maps
-    ([hashtable]::Synchronized).
-  - Runspace Pool Dispatcher: Leverages
-    [System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspacePool(1, 5)
-    to manage 5 concurrent download streams simultaneously.
-  - 100ms Non-Blocking UI Marshaller ($UiTimer): A lightweight timer continually
-    dequeues log entries from the synchronized LogQueue, calculates overall
-    download completion percentages, updates the marquee progress bar, and
-    refreshes category item badges ([CACHED], [POLICY]).
-
-8. Context Menu & OS Maintenance Subsystem
-
-Right-Click Action Context Menu ($ActionContextMenu)
-
-Right-clicking any application in the catalog provides direct interaction:
-
-  - 🚀 Run / Install / Apply: Directly executes cached binaries, merges .reg
-    files, or runs system maintenance subroutines.
-  - 📦 Extract to Folder: Automatically expands .zip or .7z archives into a
-    subfolder within the target directory using native .NET ZipFile or 7-Zip.
-  - 📂 Open Containing Folder: Opens Windows File Explorer with the target file
-    highlighted (explorer.exe /select,"<Path>").
-  - 🔍 Verify Local Integrity: Executes an on-demand Offset-0 Magic-Byte
-    inspection on disk and outputs byte-level validity to the console.
-
-Tab 15: OS Maintenance (Local In-Memory Policies & CMD Repairs)
-
-Contains 40 offline actions that run without network access:
-
-1.  Context Menu Modifications: One-click .reg policies to restore
-    classic Windows 10 menus, modern Windows 11 menus, add Take Ownership, Open
-    in PowerShell, Toggle Hidden Files, Toggle Extensions, Copy Path, and God
-    Mode.
-2.  In-Memory Policy Tweaks: Immediate registry modifications
-    disabling telemetry, DiagTrack services, consumer Cortana, Bing Start Menu
-    search, lock screen ads, timeline tracking, and advertising IDs, while
-    enabling Ultimate Performance schemes and strict hanging application
-    termination.
-3.  Elevated CMD OS Repairs: Automated execution of administrative
-    system repairs: DISM Online Image Restoration (/RestoreHealth), SFC Scannow,
-    DNS Flush & Re-registration, Winsock & TCP/IP Stack Reset, Windows Update &
-    Catroot2 Service Reset, UWP Built-in Package Re-registration, Icon & Font
-    Cache Rebuilding, and Windows Explorer Shell Restarts.
-
-9. Privacy, Feedback & Visual Identity Standards
-
-The Toolbox strictly adheres to clean privacy and visual presentation standards:
-
-  - Zero Plaintext Visual Email: Developer contact endpoints do not appear in
-    visual UI labels, sub-headers, or modal body text. System contact handlers
-    operate through encoded ASCII byte arrays that resolve into mailto: URI
-    dispatchers and system clipboard handlers.
-  - Unified Developer Copy: Standardized About and Feedback dialogues provide
-    developer background, PayPal, and Ko-fi support endpoints.
-
-    <img width="1664" height="2496" alt="1788191087213-01a0587d-c05b-7db9-9032-9db091b0a550" src="https://github.com/user-attachments/assets/d823639b-b19b-4c98-aa1c-464789c2c6ad" />
-
+Third-party software packages accessible through Morphs Creations Toolbox Suite
+remain subject to the respective licensing, redistribution, and usage terms of
+their original developers and publishers. Morphs Creations Toolbox Suite
+provides an automated management and deployment mechanism; it does not claim
+ownership or endorsement of third-party software assets.
