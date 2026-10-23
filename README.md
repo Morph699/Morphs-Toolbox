@@ -1,6 +1,6 @@
 <img width="864" height="1152" alt="Morphs Creations Toolbox v7 01" src="https://github.com/user-attachments/assets/66c5c20a-2e50-4a48-aff4-46703d06ad64" />
 
-🧰 Morphs Creations Toolbox Suite (v7.01)
+🧰 Morphs Creations Toolbox Suite
 
 The Ultimate Technician, SysAdmin & Creator Utility Deployment Engine Curated, Portable, and Direct Binary Retrieval with Zero Shovelware
 
@@ -12,10 +12,12 @@ Instead of hunting down mirrors, expired links, and setup bundles, the Toolbox p
 
 📊 Current Scope & Numbers (v7.01 Active Baseline)
 
-  - 750+ Verified Independent Applications: Hand-curated tools across 15 production categories, prioritizing portable editions and clean single-executable packages.
+  - *750+ Verified Independent Applications: Hand-curated tools across 15 production categories, prioritizing portable editions and clean single-executable packages.
   - 40 Surgical Windows Repairs & In-Memory Policies: Built-in DISM/SFC health repairs, context menu modifiers, telemetry killers, font/icon cache rebuilders, and network stack resets (0 MB overhead).
   - Strict Inclusion Floor: Every mainline tool meets a clean 5 MB+ threshold to eliminate useless micro-stubs, with essential micro-utilities quarantined to a dedicated partition.
   - Offset-0 Magic-Byte Verification: Built-in binary verification inspects file ignatures (MZ, PK, 7z, MSI) at byte offset 0, automatically purging 404 error pages or corrupted downloads.
+
+  - * Amount varies due to apps individual availability *
 
 🗂️ What's Inside: 15 Dedicated Workspaces
 
@@ -54,7 +56,7 @@ To protect local bandwidth and provide transparent access, the Toolbox categoriz
 
   - 🟢 Free Tier (0.01 MB – 25 MB): 100% Free forever. Full access to lightweight diagnostics, Sysinternals, portable scrubbers, Rufus, CPU-Z, Notepad++, WinSCP, and all OS maintenance repairs.
   - 🟡 Supporter Tier (25 MB – 40 MB): Mid-weight tools, audio engines, and diff utilities (unlocked via Supporter key / tip).
-  - 🔵 Standard Tier (40 MB – 100 MB): Full desktop browsers, media suites, and developer workstations.
+  - 🔵 Standard Tier (40 MB – 100 MB): Full desktop browsers, media suites, and developer workstations ($4.99).
   - 🟣 Pro Tier (>100 MB): Heavyweight developer IDEs, local AI engines, container stacks, and Live Linux ISO images ($7.99 Lifetime Tech Kit).
 
 🎨 Visual Polish & System Performance
